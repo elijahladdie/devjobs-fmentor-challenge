@@ -1,0 +1,51 @@
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+  height: fit-content;
+  display: flex;
+  gap: 12px;
+}
+
+.toggle-switch {
+  display: inline-block;
+  background: #fff;
+  border-radius: 16px;
+  width: 48px;
+  height: 24px;
+  position: relative;
+  vertical-align: middle;
+  transition: 0.3s ease;
+}
+.toggle-switch:before,
+.toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  display: block;
+  background-color: #5964e0;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: #939bf4;
+}
+
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 27px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.toggle-label {
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+}

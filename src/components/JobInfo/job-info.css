@@ -1,0 +1,77 @@
+.job-info-container {
+  max-width: 730px;
+  background-color: var(--clr-cardBackground);
+  padding: 50px 45px;
+  border-radius: 6px;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 80px;
+    padding: 40px 20px;
+  }
+
+  .job-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    .tags-wrapper {
+      .contract-info {
+        font-size: 1rem;
+        color: var(--clr-infoKeys);
+      }
+
+      & h1 {
+        margin: 8px 0;
+        color: var(--clr-headingTxt);
+
+        @media screen and (max-width: 500px) {
+          margin: 0;
+          font-size: 20px;
+        }
+      }
+
+      & h4 {
+        text-transform: capitalize;
+        color: var(--clr-accent);
+      }
+    }
+  }
+
+  .job-description-txt {
+    margin-top: 45px;
+  }
+
+  .requirements-wrapper,
+  .tasks-wrapper {
+    margin-top: 45px;
+
+    & h3 {
+      margin-bottom: 25px;
+    }
+
+    .list {
+      margin-top: 25px;
+      margin-left: 20px;
+
+      & li {
+        margin-bottom: 10px;
+      }
+
+      & li::marker {
+        color: var(--clr-accent);
+        font-weight: 700;
+      }
+    }
+  }
+}

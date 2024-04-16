@@ -1,0 +1,33 @@
+.homepage {
+  position: relative;
+}
+
+.error-page {
+  margin-top: 40px;
+  text-align: center;
+
+  .error-text {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: red;
+  }
+}
+
+.job-page-container {
+  max-width: 730px;
+  margin: 0 auto;
+
+  .float-container {
+    height: 140px;
+    position: relative;
+  }
+
+  @media screen and (max-width: 730px) {
+    padding: 0 20px;
+  }
+}
+
+.load-btn {
+  margin: 10px auto 40px auto;
+}

@@ -1,0 +1,48 @@
+.card-container {
+  position: relative;
+  margin-bottom: 30px;
+  padding: 45px 30px;
+  border-radius: 6px;
+  background-color: var(--clr-cardBackground);
+  transition: var(--transition);
+
+  .logo-holder {
+    position: absolute;
+    top: -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+  }
+
+  .card-header {
+    display: flex;
+    font-size: 1rem;
+    color: var(--clr-infoKeys);
+  }
+
+  & h3 {
+    margin: 20px 0 10px 0;
+    transition: var(--transition);
+  }
+
+  .company-name {
+    font-size: 1rem;
+    color: var(--clr-infoKeys);
+  }
+
+  & h4 {
+    margin-top: 40px;
+    text-transform: capitalize;
+    color: var(--clr-accent);
+  }
+
+  &:hover {
+    transform: scale(1.03);
+
+    & h3 {
+      color: var(--clr-accent);
+    }
+  }
+}

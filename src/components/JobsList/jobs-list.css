@@ -1,0 +1,20 @@
+.jobs-list-container {
+  padding: 120px 165px 0 165px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 22px;
+
+  /* RESP */
+  @media screen and (max-width: 1170px) {
+    padding: 200px 165px 0 165px;
+  }
+
+  @media screen and (max-width: 765px) {
+    padding: 200px 45px 0 45px;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 280px 25px 0 25px;
+    grid-template-columns: 1fr;
+  }
+}

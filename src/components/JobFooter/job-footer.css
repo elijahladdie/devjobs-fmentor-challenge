@@ -1,0 +1,30 @@
+footer {
+  margin-top: 50px;
+  padding: 25px 40px;
+  width: 100%;
+  height: 100px;
+  background-color: var(--clr-cardBackground);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .gen-wrapper {
+    .founder {
+      margin-top: 5px;
+      font-size: 1rem;
+      font-weight: 400;
+      text-transform: capitalize;
+      color: var(--clr-infoKeys);
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-top: 30px;
+    padding: 25px;
+    display: block;
+
+    .gen-wrapper {
+      display: none;
+    }
+  }
+}

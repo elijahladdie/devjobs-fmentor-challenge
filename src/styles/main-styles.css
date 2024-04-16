@@ -1,0 +1,132 @@
+/* Component & Pages Styles Import */
+@import url(../styles/page-styles.css);
+@import url(../components/Header/header.css);
+@import url(../components/ThemeSwitch/theme-switch.css);
+@import url(../components/Filters/filters.css);
+@import url(../components/JobsList/jobs-list.css);
+@import url(../components/Card/card.css);
+@import url(../components/JobHero/job-hero.css);
+@import url(../components/JobInfo/job-info.css);
+@import url(..//components/JobFooter/job-footer.css);
+
+/* Init */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+
+/* Variables */
+:root {
+  --font: "Kumbh Sans", sans-serif;
+  --inspect: solid red 1px;
+  --transition: 250ms ease;
+}
+
+.light-theme {
+  --clr-bodyBackground: #f4f6f8;
+  --clr-cardBackground: #ffffff;
+  --clr-btn-inverted-background: #eff0fc;
+  --clr-accent: #5964e0;
+  --clr-headingTxt: #19202d;
+  --clr-infoKeys: #6e8098;
+  --clr-bodyText: #6e8098;
+  --clr-btn-inverted-txt: #5964e0;
+  --clr-inverted-hover: #c4c8f4;
+}
+
+.dark-theme {
+  --clr-bodyBackground: #121721;
+  --clr-cardBackground: #19202d;
+  --clr-btn-inverted-background: #303642;
+  --clr-accent: #5964e0;
+  --clr-headingTxt: #ffffff;
+  --clr-infoKeys: #6e8098;
+  --clr-bodyText: #9daec2;
+  --clr-btn-inverted-txt: #ffffff;
+  --clr-inverted-hover: #535862;
+}
+
+/* --- MAIN CSS --- */
+
+body {
+  font-family: var(--font);
+  background-color: var(--clr-bodyBackground);
+  min-height: 100vh;
+  transition: 200ms ease;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--clr-headingTxt);
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--clr-headingTxt);
+}
+
+h4 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.body-txt {
+  font-size: 1rem;
+  line-height: 26px;
+  font-weight: 400;
+  color: var(--clr-bodyText);
+}
+
+.btn {
+  display: grid;
+  place-items: center;
+  min-width: 140px;
+  height: 50px;
+  background-color: var(--clr-accent);
+  color: #ffffff;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    background-color: #939bf4;
+  }
+}
+
+.btn-invert {
+  background-color: var(--clr-btn-inverted-background);
+  color: var(--clr-btn-inverted-txt);
+
+  &:hover {
+    background-color: var(--clr-inverted-hover);
+  }
+}
+
+/* --- MOBILE RESPONSIVE --- */
+
+@media screen and (max-width: 450px) {
+  /* some class */
+}

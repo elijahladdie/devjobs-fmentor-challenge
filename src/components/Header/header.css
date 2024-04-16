@@ -1,0 +1,30 @@
+header {
+  width: 100%;
+  height: 160px;
+  padding: 45px 165px 0 165px;
+  background-image: url(../../assets/desktop/bg-pattern-header.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+
+  .devjobs-logo {
+    height: 32px;
+    width: auto;
+  }
+
+  .switch {
+    color: white;
+  }
+
+  @media screen and (max-width: 765px) {
+    padding: 45px 45px 0 45px;
+  }
+
+  /* Mobile breakpoint? */
+  @media screen and (max-width: 450px) {
+    height: 135px;
+    padding: 30px 25px 0 25px;
+    background-image: url(../../assets/mobile/bg-pattern-header.svg);
+  }
+}

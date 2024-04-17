@@ -65,7 +65,7 @@ const Filters = ({ setJobs, setShowLoadBtn }) => {
             onChange={handleChange}
             name="multiple"
             id="multiple"
-            placeholder="Filter by jobtitle or company…"
+            placeholder="Search job or company…"
           />
         </div>
 
@@ -80,7 +80,7 @@ const Filters = ({ setJobs, setShowLoadBtn }) => {
             onChange={handleChange}
             name="location"
             id="location"
-            placeholder="Filter by country..."
+            placeholder="Search country..."
           />
         </div>
 

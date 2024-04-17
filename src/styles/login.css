@@ -1,0 +1,90 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-color: #f9f9f9; */
+}
+
+.login-form h2 {
+    text-align: center;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.login-form button {
+    width: 100%;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+.login-form p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.login-form p button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.login-form p button:hover {
+    text-decoration: underline;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+.purple-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    position: relative;
+}
+
+.purple-button:after {
+    width: 0;
+    transition: width 4s ease-in; 
+}
+
+.purple-button:hover:after {
+    content: "";
+    width: 100%;
+    background: purple;
+    height: .2rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}

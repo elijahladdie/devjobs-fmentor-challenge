@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { IoSearch, IoLocationSharp } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import jobsData from "../../assets/api/data.json";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Filters = ({ setJobs, setShowLoadBtn }) => {
   // Text/searchterms Input State
@@ -11,6 +12,23 @@ const Filters = ({ setJobs, setShowLoadBtn }) => {
     location: "",
     fulltime: false,
   });
+
+  const [selectedJob, setSelectedJob] = useState([]);
+  const fetchJobsData = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_APP_BASE_URL_LOCAL}/jobs/`); // Adjust the API endpoint accordingly
+
+      setSelectedJob(response.data.data)
+    } catch (error) {
+      toast.error("Error fetching jobs data")
+      console.error("", error);
+    }
+  };
+ 
+  useEffect(() => {
+    fetchJobsData();
+  }, []);
+
 
   // Handle input change
   const handleChange = (event) => {
@@ -25,9 +43,7 @@ const Filters = ({ setJobs, setShowLoadBtn }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(searchTerms);
-
-    const filterData = jobsData.filter((job) => {
+    const filterData = selectedJob.filter((job) => {
       return (
         (searchTerms.multiple === "" ||
           job.company.toLowerCase().includes(searchTerms.multiple) ||
@@ -37,7 +53,6 @@ const Filters = ({ setJobs, setShowLoadBtn }) => {
         (!searchTerms.fulltime || job.contract === "Full Time")
       );
     });
-    console.log(filterData.length);
 
     // Set Jobs List to Filtered
     setJobs(filterData);

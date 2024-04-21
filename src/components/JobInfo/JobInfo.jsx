@@ -11,7 +11,7 @@ const JobInfo = ({ selectedJob }) => {
     contract,
     apply,
     requirements,
-    role,
+    roles,
   } = selectedJob;
 
   return (
@@ -39,27 +39,38 @@ const JobInfo = ({ selectedJob }) => {
       {/* Job description */}
       <p className="job-description-txt body-txt">{description}</p>
 
+    
+    
       {/* Requirements */}
       <div className="requirements-wrapper">
         <h3>Requirements</h3>
-        <p className="body-txt">{requirements.content}</p>
-        <ul className="list body-txt">
-          {requirements.items.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </ul>
+        {requirements?.map((role, index) => (
+          <span key={index}>
+            <p className="body-txt">{role.content}</p>
+            <ol className="list body-txt">
+              {role.items.map((item, itemIndex) => (
+                <li key={itemIndex}>{item}</li>
+              ))}
+            </ol>
+          </span>
+        ))}
       </div>
 
       {/* Role / Tasks */}
       <div className="tasks-wrapper">
         <h3>What You Will Do</h3>
-        <p className="body-txt">{role.content}</p>
-        <ol className="list body-txt">
-          {role.items.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
-        </ol>
+        {roles?.map((role, index) => (
+          <span key={index}>
+            <p className="body-txt">{role.content}</p>
+            <ol className="list body-txt">
+              {role.items.map((item, itemIndex) => (
+                <li key={itemIndex}>{item}</li>
+              ))}
+            </ol>
+          </span>
+        ))}
       </div>
+
     </div>
   );
 };

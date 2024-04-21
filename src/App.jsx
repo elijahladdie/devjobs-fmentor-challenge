@@ -6,7 +6,12 @@ import Home from "./pages/Home";
 import Job from "./pages/Job";
 import RoutingError from "./pages/RoutingError";
 import LoginForm from "./components/authorization/Login";
-import ProtectedRoutes from "./components/authorization/ProtectedRoutes"
+import ProtectedRoutes from "./components/authorization/ProtectedRoutes";
+import JobTable from "./pages/Admin/JobTable";
+import AdminLayout from "./pages/Admin/AdminLayout";
+import Dashboard from "./pages/Admin/Dashboard";
+import UserTable from "./pages/Admin/userTable";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -14,16 +19,23 @@ const App = () => {
         <Route
           path="/"
           element={<RootLayout />}
-          // errorElement={<RoutingError />} // If you still need error handling
         >
-          <Route path="/auth/login" element={<LoginForm />} /> {/* Login route */}
-          <Route element={<ProtectedRoutes />}>
-
-            <Route index element={<Home />} />
-            <Route path="job/:jobId" element={<Job />} />
-
+          <Route index element={<Home />} />
+          <Route path="job/:jobId" element={<Job />} />
+          <Route path="/auth/login" element={<LoginForm />} />
+          <Route path="*" element={<RoutingError />} />
+        </Route>
+        <Route
+          path="admin/*"
+          element={<AdminLayout />}
+        >
+          <Route path="*" element={<ProtectedRoutes />}>
+            {/* Jobs */}
+            <Route index element={<Dashboard />} />
+            <Route path="job/manage" element={<JobTable />} />
+            <Route path="user/manage" element={<UserTable />} />
+            <Route path="*" element={<RoutingError />} />
           </Route>
-          <Route path="*" element={<RoutingError />} /> {/* Error route */}
         </Route>
       </Routes>
     </BrowserRouter>

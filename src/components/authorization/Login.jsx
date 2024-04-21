@@ -1,27 +1,62 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import "../../styles/login.css"
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import axios for making HTTP requests
+import "../../styles/login.css";
+import toast, { Toaster } from 'react-hot-toast';
+
+import { Navigate } from "react-router-dom";
+
+
 const LoginForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [login, setLogin] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      setLogin(token)
+    }
+  }, [])
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can implement the logic for login or sign up based on the value of isLogin
-    if (isLogin) {
-      // Handle login
-    } else {
-      // Handle sign up
+    try {
+      if (isLogin) {
+        // Handle login
+        const response = await axios.post(`${import.meta.env.VITE_APP_BASE_URL_LOCAL}/access/auth`, { email, password });
+        const { resp_code, data, resp_msg } = response.data;
+
+        if (resp_code === 200) {
+          localStorage.setItem('token', data); // Store the token in localStorage
+          toast.success(resp_msg);
+          setLogin(response.data)
+        } else {
+          toast.error(resp_msg);
+        }
+      } else {
+        // Handle sign up
+        const response = await axios.post(`${import.meta.env.VITE_APP_BASE_URL_LOCAL}/access/create`, { email, username, password });
+        toast.success('Signup successful'); // Show success toast
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred'); // Show error toast
     }
   };
 
+
   return (
     <div className="login-container body-txt">
+      <Toaster />
+      {login && (
+        <Navigate to="/admin" replace={true} />
+      )}
       <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
       <form onSubmit={handleSubmit} className="login-form">
-        {isLogin ? null : (
+        {!isLogin && (
           <div>
             <label>Username:</label>
             <input
@@ -49,16 +84,12 @@ const LoginForm = () => {
         </div>
         <button type="submit" className='btn'>{isLogin ? 'Login' : 'Sign Up'}</button>
       </form>
-      <div className='flex'>
-
-        <p>
-          {isLogin ? "Don't have an account? " : "Already have an account? "}
-        </p>
+      <div className='flex login'>
+        <p>{isLogin ? "Don't have an account? " : "Already have an account? "}</p>
         <button onClick={() => setIsLogin(!isLogin)} className="purple-button body-txt ">
           {isLogin ? 'Sign Up' : 'Login'}
         </button>
       </div>
-
     </div>
   );
 }

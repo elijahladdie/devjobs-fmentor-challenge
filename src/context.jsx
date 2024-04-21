@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useState, useEffect } from "react";
-import jobsData from "./assets/api/data.json";
+
+import axios from "axios";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+
+
   // ---- Global States
   const [theme, setTheme] = useState("light-theme");
   const [jobs, setJobs] = useState([]);
@@ -19,20 +22,22 @@ export const AppProvider = ({ children }) => {
     setTheme("light-theme");
   };
 
-  // Filter array for partial rendering
-  const initialDataLoad = () => {
-    const filterIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const filteredJobs = jobsData.filter((job) =>
-      filterIndexes.includes(job.id)
-    );
-    setJobs(filteredJobs);
+  const fetchJobsData = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_APP_BASE_URL_LOCAL}/jobs/`); // Adjust the API endpoint accordingly
+   
+      const filterIndexes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const filteredJobs = response.data.data.filter((job) =>
+        filterIndexes.includes(job.id)
+      );
+      setJobs(filteredJobs);
+    } catch (error) {
+      console.error("Error fetching jobs data:", error);
+    }
   };
-
-  //   Invoke initial load
   useEffect(() => {
-    initialDataLoad();
+    fetchJobsData();
   }, []);
-
   return (
     <AppContext.Provider
       value={{
@@ -41,7 +46,6 @@ export const AppProvider = ({ children }) => {
         toggleTheme,
         jobs,
         setJobs,
-        jobsData,
         showLoadBtn,
         setShowLoadBtn,
       }}

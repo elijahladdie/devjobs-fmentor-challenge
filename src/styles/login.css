@@ -59,8 +59,13 @@
 
 .flex {
     display: flex;
+}
+
+.flex.login {
+
     align-items: center;
 }
+
 .purple-button {
     background-color: transparent;
     border: none;
@@ -76,7 +81,7 @@
 
 .purple-button:after {
     width: 0;
-    transition: width 4s ease-in; 
+    transition: width 4s ease-in;
 }
 
 .purple-button:hover:after {

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const JobFooter = ({ selectedJob }) => {
   // destructure
   const { position, apply } = selectedJob;

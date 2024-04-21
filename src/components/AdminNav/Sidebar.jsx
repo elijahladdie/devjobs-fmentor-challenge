@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const SidebarContext = createContext();
 
-export default function Sidebar({ children }) {
+export default function SideBar({ children }) {
     const [expanded, setExpanded] = useState(true);
     return (
 

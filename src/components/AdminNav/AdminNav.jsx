@@ -1,6 +1,6 @@
 import { LayoutDashboard, Home, Settings } from "lucide-react";
 
-import Sidebar, { SidebarItem ,Logout} from "./Sidebar";
+import Sidebar, { SidebarItem ,Logout} from "./SideBar";
 
 const AdminNav = () => {
 
